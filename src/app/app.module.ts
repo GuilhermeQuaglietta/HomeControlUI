@@ -1,31 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { TopbarComponent } from './pages/home/topbar.component';
-import { HomeComponent } from './pages/home/home.component';
-import { UserComponent } from './pages/user/user.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ShoppingComponent } from './pages/shopping/shopping.component';
-import { AccountComponent } from './pages/account/account.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { NotFoundComponent } from './core/pages/notfound/notfound.component';
+import { UserComponent } from './modules/board/pages/user/user.component';
+import { CoreModule } from './core/core.module';
+import { BoardModule } from './modules/board/board.module';
+import { Routing } from './app.routing';
+import { HomeModule } from './modules/home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopbarComponent,
-    HomeComponent,
-    UserComponent,
-    ShoppingComponent,
-    AccountComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      { path: 'home', component: HomeComponent },
-      { path: 'shopping', component: ShoppingComponent },
-      { path: 'account', component: AccountComponent },
-      { path: 'user', component: UserComponent },
-    ])
+    CommonModule,
+    HttpClientModule,
+    //system modules
+    CoreModule,
+    HomeModule,
+    BoardModule,
+    Routing
   ],
   providers: [],
   bootstrap: [AppComponent]

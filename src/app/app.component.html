@@ -6,12 +6,18 @@
             </button>
         </div>
         <div class='btn-group' role='group' aria-label='Opcoes do sistema'>
+
             <button routerLink="/shopping" routerLinkActive="active" type='button'
                 class='btn btn-primary'>Compras</button>
             <button routerLink="/account" routerLinkActive="active" type='button'
                 class='btn btn-primary'>Contas</button>
         </div>
+        <div class='btn-group' role='group' aria-label=''>
+            <button (click)="logout()" type='button' class='btn btn-danger'>Logoff</button>
+        </div>
     </div>
 </div>
 
-<router-outlet></router-outlet>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
