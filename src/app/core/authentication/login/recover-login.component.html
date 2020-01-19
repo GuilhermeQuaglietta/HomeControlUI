@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-center h-100">
+    <div class="card" style="min-width: 40rem;">
+        <div class="card-header theme-bar">
+            <h3>Autenticar</h3>
+        </div>
+        <div class="card-body ">
+            <form class="">
+                <div class="input-group form-group ">
+                    <div class="input-group-prepend ">
+                        <span class=" input-group-text "><i class="fa fa-user fa-fw  "></i></span>
+                    </div>
+                    <input type="text" name="email" class="form-control" [(ngModel)]="email" aria-describedby="emailHelp" placeholder="E-mail">
+                </div>
+                <div class="form-group">
+                    <div class="input-group ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-key fa-fw"></i></span>
+                        </div>
+                        <input type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="Senha">
+                    </div>
+                    <small id="emailHelp" class="form-text text-muted"><a href="#">Esqueceu sua senha?</a></small>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" (click)="login()" class="btn btn-primary theme-button">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer theme-bar">
+            <div class="d-flex links">
+                Não tem uma conta? &nbsp;<a href="#" class="theme-link">Inscreva-se</a>
+            </div>
+        </div>
+    </div>
+</div>

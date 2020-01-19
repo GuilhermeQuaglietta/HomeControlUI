@@ -1,22 +1,87 @@
-<div class='d-flex justify-content-center'>
-    <div class='btn-toolbar'>
-        <div class='btn-group' role='group' aria-label='Página principal'>
-            <button routerLink="/home" routerLinkActive="active" type='button' class='btn btn-primary'>
-                Pagina inicial
-            </button>
-        </div>
-        <div class='btn-group' role='group' aria-label='Opcoes do sistema'>
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light mb-2">
+    <a class="navbar-brand nvabg-dark" routerLink="/home" routerLinkActive="active">Home Control</a>
 
-            <button routerLink="/shopping" routerLinkActive="active" type='button'
-                class='btn btn-primary'>Compras</button>
-            <button routerLink="/account" routerLinkActive="active" type='button'
-                class='btn btn-primary'>Contas</button>
-        </div>
-        <div class='btn-group' role='group' aria-label=''>
-            <button (click)="logout()" type='button' class='btn btn-danger'>Logoff</button>
+    <div *ngIf="loggedIn">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active mr-1">
+                    <a class="nav-link btn text-light" href="#">Home <span class="sr-only">(página atual)</span></a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <div class="btn-group" role="group">
+                        <a routerLink="/shopping" routerLinkActive="active" class="nav-link btn text-light">Compras</a>
+                        <button type="button" class="nav-link btn text-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="sr-only">Opções de compras</span>
+                        </button>
+                        <div class="dropdown-menu bg-dark">
+                            <a class="dropdown-item text-light" href="#">Incluir compra</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-light" href="#">Estatisticas</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <div class="btn-group" role="group">
+                        <a href="javascript:void(0)" class="nav-link btn text-light">Finanças</a>
+                        <button type="button" class="nav-link btn text-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="sr-only">Opções de contas</span>
+                        </button>
+                        <div class="dropdown-menu bg-dark">
+                            <a class="dropdown-item text-light" routerLink="/account" routerLinkActive="active" href="#">Contas financeiras</a>
+                            <a class="dropdown-item text-light" href="#">Transferências</a>
+                            <a class="dropdown-item text-light" href="#">Lançamentos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-light" href="#">Estatisticas</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <div class="btn-group" role="group">
+                        <a href="javascript:void(0)" class="nav-link btn text-light">Cartões</a>
+                        <button type="button" class="nav-link btn text-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="sr-only">Opções de contas</span>
+                        </button>
+                        <div class="dropdown-menu bg-dark">
+                            <a class="dropdown-item text-light" href="#">Incluir lançamento</a>
+                            <a class="dropdown-item text-light" href="#">Fatura atual</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-light" href="#">Estatisticas</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <div class="btn-group" role="group">
+                        <a href="javascript:void(0)" class="nav-link btn text-light">Estoque</a>
+                        <button type="button" class="nav-link btn text-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="sr-only">Estoque</span>
+                        </button>
+                        <div class="dropdown-menu bg-dark">
+                            <a class="dropdown-item text-light" href="#">Previsão</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-light" href="#">Estatisticas</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class='btn-group' role='group' aria-label=''>
+                        <button (click)="logout()" type='button' class='btn btn-danger'>Sair</button>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
-</div>
+
+
+</nav>
 
 <div class="container">
     <router-outlet></router-outlet>
