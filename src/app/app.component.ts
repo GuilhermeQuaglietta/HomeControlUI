@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from './core/authentication/authentication.service';
+import { AuthorizationService } from './core/authorization/authorization.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +13,16 @@ export class AppComponent implements OnInit {
   title = 'HomeControlUI';
   loggedIn = false;
 
-  constructor(private authService: AuthenticationService) {
+  constructor(private authService: AuthorizationService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
-    this.authService.authChangeEmitter.subscribe(x => this.loggedIn = x);
+    this.authService.loginChangeEmitter.subscribe(x => this.loggedIn = x);
   }
 
   logout() {
-    this.authService.logoff();
+    this.authService.logOutUser();
+    this.router.navigateByUrl('login');
   }
 }

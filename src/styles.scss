@@ -24,3 +24,7 @@ $btn-background: linear-gradient(90deg, $color2, $color1 5%, $color1 95%, $color
 .text-line-feed {
     white-space: pre-line;
 }
+
+.ng-invalid:not(form).ng-touched {
+    border: 1px solid red;
+}

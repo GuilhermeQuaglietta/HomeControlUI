@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-center h-100">
+    <div class="card" style="min-width: 40rem;">
+        <div class="card-header theme-bar">
+            <h3>
+                Acesso
+            </h3>
+        </div>
+        <div class="card-body ">
+            <app-login *ngIf="loginMode"></app-login>
+            <app-recover-email *ngIf="emailMode"></app-recover-email>
+            <app-recover-password *ngIf="passwordMode"></app-recover-password>
+        </div>
+        <div class="card-footer theme-bar">
+            <div class="d-flex links">
+                Não tem uma conta? &nbsp;<a routerLink="login/create" href="#" class="theme-link">Inscreva-se</a>
+            </div>
+        </div>
+    </div>
+</div>

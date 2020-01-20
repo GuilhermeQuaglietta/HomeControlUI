@@ -1,0 +1,36 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend ">
+                <span class=" input-group-text "><i class="fa fa-user fa-fw  "></i></span>
+            </div>
+            <input #emailInput="ngModel" [(ngModel)]="recoveryEmail" required type="text" name="recoveryEmail" class="form-control" placeholder="E-mail*">
+        </div>
+        <small *ngIf="emailInput.invalid && form.submitted" class="form-text text-danger">Campo obrigatório</small>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-6">
+                <button [disabled]="submitting || submitted" type="submit" class="btn btn-primary btn-block theme-button">
+                    <i *ngIf="submitting" class="fa fa-spinner fa-pulse"></i>
+                    <ng-template [ngIf]="!submitting && !submitted">Enviar e-mail de recuperação</ng-template>
+                    <ng-template [ngIf]="submitting">&nbsp;Enviando e-mail...</ng-template>
+                    <ng-template [ngIf]="submitted">Enviado!</ng-template>
+                </button>
+            </div>
+            <div class="col-sm-6">
+                <small class="form-text theme-link text-right">
+                        <a routerLink="/login" routerLinkActive="active" >Voltar para login</a>
+                    </small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div *ngIf="loginErrorMessage" class="text-danger text-line-feed">{{loginErrorMessage}}</div>
+            <div *ngIf="loginSuccessMessage" class="text-success text-line-feed">{{loginSuccessMessage}}</div>
+        </div>
+    </div>
+</form>
