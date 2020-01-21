@@ -8,3 +8,10 @@ export interface IChangePassword {
     newPassword: string,
     newPasswordConfirmation: string,
 }
+
+export interface ILoginCreate {
+    Name: string,
+    Password: string,
+    PasswordConfirmation: string,
+    Email: string
+}

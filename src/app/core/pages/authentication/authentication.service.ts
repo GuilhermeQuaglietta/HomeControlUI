@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ILogin, IChangePassword } from './authentication';
+import { ILogin, IChangePassword, ILoginCreate } from './authentication';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,12 +9,19 @@ import { Observable } from 'rxjs';
 export class AuthenticationService {
   private baseUrl = "https://localhost:44383/"
   private loginUrl = this.baseUrl + "api/v1/login"
+  private loginCreateUrl = this.baseUrl + "api/v1/user"
   private recoverUrl = this.baseUrl + "api/v1/login/recover"
 
   constructor(private client: HttpClient) { }
 
   login(login: ILogin): Observable<any> {
     return this.client.post(this.loginUrl, login, {
+      withCredentials: true,
+    });
+  }
+
+  loginCreate(login: ILoginCreate): Observable<any> {
+    return this.client.post(this.loginCreateUrl, login, {
       withCredentials: true,
     });
   }

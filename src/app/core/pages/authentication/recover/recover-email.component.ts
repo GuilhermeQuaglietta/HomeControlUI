@@ -5,7 +5,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AuthenticationService } from '../authentication.service';
 
 @Component({
-  selector: 'app-recover-email',
   templateUrl: './recover-email.component.html',
 })
 export class RecoverEmailComponent implements OnInit {

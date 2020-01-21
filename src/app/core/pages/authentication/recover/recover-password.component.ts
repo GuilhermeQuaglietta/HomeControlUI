@@ -6,7 +6,6 @@ import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-recover-password',
   templateUrl: './recover-password.component.html',
 })
 export class RecoverPasswordComponent implements OnInit {
@@ -23,8 +22,7 @@ export class RecoverPasswordComponent implements OnInit {
   submitting: boolean;
   submitted: boolean;
 
-  errorMessage: string;
-  successMessage: string;
+  message: string;
 
   constructor(private authenticationService: AuthenticationService,
     private router: Router,
@@ -36,15 +34,17 @@ export class RecoverPasswordComponent implements OnInit {
       params => {
         this.validatingKey = true;
         this.recoveryData.recoveryKey = params.get("recoveryKey");
+        this.message = "Validando chave de recuperação...";
         this.authenticationService.validateRecoveryKey(this.recoveryData.recoveryKey).subscribe(
           () => {
             this.validatingKey = false;
             this.validatedKey = true;
+            this.message = null;
           },
           error => {
             this.validatingKey = false;
             this.validatedKey = false;
-            this.errorMessage = "Chave de recuperação expirou, por favor solicite uma nova";
+            this.message = "Chave de recuperação expirou ou é inválida, por favor solicite uma nova";
           }
         );
       });
@@ -61,19 +61,17 @@ export class RecoverPasswordComponent implements OnInit {
     );
   }
   private onSuccess() {
-    this.successMessage = "Alteração de senha realizada com sucesso. Redirecionando para a tela de login...";
-    this.errorMessage = null;
+    this.message = "Alteração de senha realizada com sucesso. Redirecionando para a tela de login...";
     this.submitting = false;
     this.submitted = true;
 
     setTimeout(() => {
       this.router.navigateByUrl('login');
     }, 2000)
-
   }
 
   private onFailure(error: HttpErrorResponse): void {
-    this.errorMessage = "Estamos com problemas no serviço. \n Aguarde alguns instantes e tente novamente";
+    this.message = "Estamos com problemas no serviço. \n Aguarde alguns instantes e tente novamente";
     this.submitting = false;
     this.submitted = false;
   }

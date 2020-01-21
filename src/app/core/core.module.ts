@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/authentication/login/login.component';
 import { RecoverEmailComponent } from './pages/authentication/recover/recover-email.component';
 import { RecoverPasswordComponent } from './pages/authentication/recover/recover-password.component';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
+import { LoginCreateComponent } from './pages/authentication/login/login-create.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AuthenticationComponent } from './pages/authentication/authentication.c
     RecoverPasswordComponent,
     NotFoundComponent,
     ErrorComponent,
+    LoginCreateComponent,
   ],
   imports: [
     CommonModule,
