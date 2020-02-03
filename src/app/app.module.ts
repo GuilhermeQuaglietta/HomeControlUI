@@ -10,6 +10,7 @@ import { Routing } from './app.routing';
 import { HomeModule } from './modules/home/home.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CommonModule,
     HttpClientModule,
     RouterModule,
+    FormsModule,
     //dependency modules
     BrowserAnimationsModule,
     ToastrModule.forRoot({
@@ -40,4 +42,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

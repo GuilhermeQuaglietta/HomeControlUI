@@ -2,15 +2,15 @@
     <div class="card" style="min-width: 40rem;">
         <div class="card-header theme-bar">
             <h3>
-                Acesso
+                {{titulo}}
             </h3>
         </div>
         <div class="card-body ">
-            <router-outlet></router-outlet>
+            <ng-content select="[cardBody]"></ng-content>
         </div>
         <div class="card-footer theme-bar">
             <div class="d-flex links">
-                Não tem uma conta? &nbsp;<a routerLink="/login/create" href="#" class="theme-link">Inscreva-se</a>
+                <ng-content select="[cardFooter]"></ng-content>
             </div>
         </div>
     </div>

@@ -5,7 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AuthenticationService } from '../authentication.service';
 
 @Component({
-  templateUrl: './recover-email.component.html',
+  templateUrl: './recover-email.component.html'
 })
 export class RecoverEmailComponent implements OnInit {
 
@@ -33,7 +33,7 @@ export class RecoverEmailComponent implements OnInit {
       error => this.onFailure(error)
     );
   }
-  private onSuccess(jwtString: string) {
+  private onSuccess(recoverykey: string) {
     this.successMessage = "Serviço acionado com sucesso. Caso tenha digitado um e-mail válido, receberá seu e-mail de recuperação de senha em instantes";
     this.errorMessage = null;
     this.submitting = false;
@@ -44,6 +44,4 @@ export class RecoverEmailComponent implements OnInit {
     this.errorMessage = "Estamos com problemas no serviço. \n Aguarde alguns instantes e tente novamente";
     this.submitting = false;
   }
-
-
 }

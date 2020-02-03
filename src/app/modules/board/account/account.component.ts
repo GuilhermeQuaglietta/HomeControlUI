@@ -5,7 +5,6 @@ import { IAccount } from './account';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
 
@@ -14,7 +13,7 @@ export class AccountComponent implements OnInit {
   constructor(private service: AccountService) { }
 
   ngOnInit() {
-    this.service.GetAccounts().subscribe(accounts => {
+    this.service.getList().subscribe(accounts => {
       this.accountList = accounts;
     })
 

@@ -10,8 +10,8 @@ export interface IChangePassword {
 }
 
 export interface ILoginCreate {
-    Name: string,
-    Password: string,
-    PasswordConfirmation: string,
-    Email: string
+    name: string,
+    password: string,
+    passwordConfirmation: string,
+    email: string
 }

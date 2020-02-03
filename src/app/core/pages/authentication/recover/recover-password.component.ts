@@ -35,6 +35,7 @@ export class RecoverPasswordComponent implements OnInit {
         this.validatingKey = true;
         this.recoveryData.recoveryKey = params.get("recoveryKey");
         this.message = "Validando chave de recuperação...";
+
         this.authenticationService.validateRecoveryKey(this.recoveryData.recoveryKey).subscribe(
           () => {
             this.validatingKey = false;

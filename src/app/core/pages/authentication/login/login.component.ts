@@ -40,7 +40,7 @@ export class LoginComponent {
     this.successMessage = "Login realizado com sucesso! Redirecionando...";
     this.errorMessage = null;
     setTimeout(() => {
-      this.authorizationService.logInUser(jwtString);
+      this.authorizationService.setLoggedInUser(jwtString);
       this.router.navigateByUrl('home');
     }, 2000)
   }

@@ -9,21 +9,26 @@ import { RecoverEmailComponent } from './pages/authentication/recover/recover-em
 import { RecoverPasswordComponent } from './pages/authentication/recover/recover-password.component';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { LoginCreateComponent } from './pages/authentication/login/login-create.component';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faCoffee, faKey, faEnvelope, faUser, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { TestComponent } from './pages/test/test.component';
 
 @NgModule({
   declarations: [
     AuthenticationComponent,
     LoginComponent,
+    LoginCreateComponent,
     RecoverEmailComponent,
     RecoverPasswordComponent,
     NotFoundComponent,
     ErrorComponent,
-    LoginCreateComponent,
+    TestComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    FontAwesomeModule
   ],
   exports: [
     NotFoundComponent,
@@ -32,4 +37,12 @@ import { LoginCreateComponent } from './pages/authentication/login/login-create.
   ]
 })
 
-export class CoreModule { }
+export class CoreModule {
+  constructor(library: FaIconLibrary) {
+    // Add an icon to the library for convenient access in other components
+    library.addIcons(faKey);
+    library.addIcons(faUser);
+    library.addIcons(faEnvelope);
+    library.addIcons(faSpinner);
+  }
+}

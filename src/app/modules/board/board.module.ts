@@ -1,22 +1,23 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AccountEditComponent } from './pages/account/account-edit.component';
-import { AccountComponent } from './pages/account/account.component';
-import { ShoppingComponent } from './pages/shopping/shopping.component';
+import { ShoppingComponent } from './shopping/shopping.component';
 import { CoreModule } from 'src/app/core/core.module';
-import { UserComponent } from './pages/user/user.component';
-
+import { UserComponent } from './user/user.component';
+import { FormsModule } from '@angular/forms';
+import { AccountEditComponent } from './account/account-edit.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
-    AccountComponent,
-    AccountEditComponent,
     ShoppingComponent,
     UserComponent,
+    AccountEditComponent,
+    AccountComponent
   ],
   imports: [
     CommonModule,
     CoreModule,
+    FormsModule
   ]
 })
 export class BoardModule { }

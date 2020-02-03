@@ -1,45 +1,57 @@
-<form formContent #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-    <div class="form-group">
-        <div class="input-group">
-            <div class="input-group-prepend ">
-                <span class=" input-group-text "><i class="fa fa-user fa-fw  "></i></span>
+<app-authentication titulo="Acessar">
+    <div cardBody>
+        <form formContent #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend ">
+                        <span class=" input-group-text ">
+                            <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
+                        </span>
+                    </div>
+                    <input #emailInput="ngModel" [(ngModel)]="loginData.email" required type="text" name="email" class="form-control" placeholder="E-mail*">
+                </div>
+                <small *ngIf="emailInput.invalid && loginForm.submitted" class="form-text text-danger">Campo obrigatório</small>
             </div>
-            <input #emailInput="ngModel" [(ngModel)]="loginData.email" required type="text" name="email" class="form-control" placeholder="E-mail*">
-        </div>
-        <small *ngIf="emailInput.invalid && loginForm.submitted" class="form-text text-danger">Campo obrigatório</small>
+            <div class="form-group">
+                <div class="input-group ">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <fa-icon [icon]="['fas', 'key']"></fa-icon>
+                        </span>
+                    </div>
+                    <input Autocomplete #password="ngModel" [(ngModel)]="loginData.password" required type="password" name="password" class="form-control" placeholder="Senha*">
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <small *ngIf="password.invalid && loginForm.submitted" class="form-text text-danger">Campo obrigatório</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button [disabled]="submitting" type="submit" class="btn btn-primary btn-block theme-button">
+                                <i *ngIf="submitting" class="fa fa-spinner fa-pulse"></i>
+                                Entrar
+                            </button>
+                    </div>
+                    <div class="col-sm-8">
+                        <small class="form-text theme-link text-right">
+                            <a routerLink="recover" routerLinkActive="active">Esqueceu sua senha?</a> 
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div *ngIf="errorMessage" class="text-danger text-line-feed">{{errorMessage}}</div>
+                    <div *ngIf="successMessage" class="text-success text-line-feed">{{successMessage}}</div>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <div class="input-group ">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fa fa-key fa-fw"></i></span>
-            </div>
-            <input #password="ngModel" [(ngModel)]="loginData.password" required type="password" name="password" class="form-control" placeholder="Senha*">
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <small *ngIf="password.invalid && loginForm.submitted" class="form-text text-danger">Campo obrigatório</small>
-            </div>
-        </div>
+
+    <div cardFooter>
+        Não tem uma conta? &nbsp;<a routerLink="/login/create" href="#" class="theme-link">Inscreva-se</a>
     </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-4">
-                <button [disabled]="submitting" type="submit" class="btn btn-primary btn-block theme-button">
-                        <i *ngIf="submitting" class="fa fa-spinner fa-pulse"></i>
-                        Entrar
-                    </button>
-            </div>
-            <div class="col-sm-8">
-                <small class="form-text theme-link text-right">
-                        <a routerLink="recover" routerLinkActive="active">Esqueceu sua senha?</a>
-                    </small>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <div *ngIf="errorMessage" class="text-danger text-line-feed">{{errorMessage}}</div>
-            <div *ngIf="successMessage" class="text-success text-line-feed">{{successMessage}}</div>
-        </div>
-    </div>
-</form>
+</app-authentication>

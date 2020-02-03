@@ -12,10 +12,10 @@ import { HttpErrorResponse } from '@angular/common/http/http';
 export class LoginCreateComponent {
 
   loginCreateData: ILoginCreate = {
-    Email: '',
-    Name: '',
-    Password: '',
-    PasswordConfirmation: '',
+    email: '',
+    name: '',
+    password: '',
+    passwordConfirmation: '',
   }
 
   submitting = false;
@@ -50,7 +50,6 @@ export class LoginCreateComponent {
     switch (error.status) {
       case 422:
         this.errorMessage = "Dados inválidos para criação de login";
-        console.log(error.error);
         break;
 
       case 400:

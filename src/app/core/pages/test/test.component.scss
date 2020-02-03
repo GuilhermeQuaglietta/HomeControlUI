@@ -1,0 +1,22 @@
+.topBlock {
+    left: 25%;
+    width: 50%;
+    height: 500px;
+    background-color: black;
+    position: relative;
+    display: flex;
+}
+
+.middleBlock {
+    background-color: gray;
+    position: relative;
+    height: auto;
+    margin: 25px;
+}
+
+.bottomBlock {
+    position: relative;
+    background-color: white;
+    border-color: black;
+    top: 150px;
+}

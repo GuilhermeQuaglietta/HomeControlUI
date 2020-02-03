@@ -8,21 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  title = 'HomeControlUI';
-  loggedIn = false;
-
-  constructor(private authService: AuthorizationService,
-    private router: Router) {
-  }
-
-  ngOnInit(): void {
-    this.authService.loginChangeEmitter.subscribe(x => this.loggedIn = x);
-  }
-
-  logout() {
-    this.authService.logOutUser();
-    this.router.navigateByUrl('login');
-  }
 }
