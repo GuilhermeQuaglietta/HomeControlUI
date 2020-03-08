@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center h-100">
+    <div class="theme-form">
+        <div class="card-header theme-bar">
+            <h3>
+                Criar conta
+            </h3>
+        </div>
+        <div class="card-body ">
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+                <div class="form-row mb-3">
+                    <div class="col-sm-6">
+                        <label for="title">Título da conta</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                        <fa-icon [icon]="['fas', 'user']"></fa-icon>
+                                    </span>
+                            </div>
+
+                            <input #nameInput="ngModel" [(ngModel)]="account.title" required type="text" name="title" class="form-control" placeholder="Título da conta*">
+                        </div>
+                        <small *ngIf="nameInput.invalid && form.submitted" class="form-text text-danger">Campo obrigatório</small>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <label for="title">Cor de destaque</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <fa-icon [icon]="['fas', 'palette']"></fa-icon>
+                                </span>
+                            </div>
+                            <input #nameInput="ngModel" [(ngModel)]="account.highlightColor" type="color" name="highlightColor" class="form-control" placeholder="Título da conta*">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-row mb-3">
+                    <div class="col-sm-4">
+                        <button [disabled]="submitting" type="submit" class="btn btn-primary btn-block theme-button">
+                                    <fa-icon *ngIf="submitting" [icon]="['fas', 'spinner']" [pulse]="true" ></fa-icon>
+                                    Criar conta
+                                </button>
+                    </div>
+                </div>
+                <div *ngIf="errorMessage" class="form-row">
+                    <div class="col-sm-12">
+                        <div class="text-danger text-line-feed">{{errorMessage}}</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer theme-bar">
+            <div class="d-flex links">
+                <ng-content select="[cardFooter]"></ng-content>
+            </div>
+        </div>
+    </div>
+</div>

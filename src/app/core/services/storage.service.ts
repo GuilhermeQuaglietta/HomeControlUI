@@ -28,7 +28,7 @@ export class StorageService {
     }
 
     const now = new Date();
-    if (localStorageItem.expirationDate < now) {
+    if (new Date(localStorageItem.expirationDate) < now) {
       return null;
     }
 
@@ -48,6 +48,7 @@ export class StorageService {
 
   private calculateExpirationDate(hoursToExpire: number) {
     let now = new Date();
-    return new Date(now.getFullYear(), now.getMonth(), now.getHours() + hoursToExpire);
+    now.setHours(now.getHours() + 1);
+    return now;
   }
 }

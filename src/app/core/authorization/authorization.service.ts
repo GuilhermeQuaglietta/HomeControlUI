@@ -18,7 +18,6 @@ export class AuthorizationService {
   }
 
   constructor(private storage: StorageService) {
-
     var currentUser = this.getUserFromStorage();
     if (currentUser !== null && currentUser !== undefined) {
       this.JwtUser = currentUser;

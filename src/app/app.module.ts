@@ -5,12 +5,15 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from './core/core.module';
-import { BoardModule } from './modules/board/board.module';
-import { Routing } from './app.routing';
 import { HomeModule } from './modules/home/home.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faKey, faUser, faEnvelope, faSpinner, faPalette } from '@fortawesome/free-solid-svg-icons';
+import { ShoppingModule } from './modules/shopping/shopping.module';
+import { AppRoutingModule } from './app-routing.module';
+import { FinancesAccountModule } from './modules/finances-account/finances-account.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     RouterModule,
     FormsModule,
-    //dependency modules
+    //ThirdPartyModules
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass: "toast-top-center",
@@ -31,17 +34,24 @@ import { FormsModule } from '@angular/forms';
       preventDuplicates: true,
       resetTimeoutOnDuplicate: true,
       autoDismiss: true,
-      timeOut: 5000
+      timeOut: 5000,
     }),
-    //custom modules
+    //Project modules
     CoreModule,
+    FinancesAccountModule,
     HomeModule,
-    BoardModule,
-    Routing
+    ShoppingModule,
+    AppRoutingModule,
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
+  constructor(library: FaIconLibrary) {
+    // Add an icon to the library for convenient access in other components
+    library.addIcons(faKey);
+    library.addIcons(faUser);
+    library.addIcons(faEnvelope);
+    library.addIcons(faSpinner);
+    library.addIcons(faPalette);
+  }
 }

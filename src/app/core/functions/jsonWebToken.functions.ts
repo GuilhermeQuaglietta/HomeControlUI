@@ -6,7 +6,9 @@ export function tokenStringToObject(jwtString: string): IJwtObject {
 }
 export function tokenToUser(jwtObject: IJwtObject): IJwtUser {
     return {
-        UserName: jwtObject.UserName,
+        Name: jwtObject.Name,
+        Email : jwtObject.Email,
+        UID: jwtObject.UID,
         Audience: jwtObject.aud,
         Issuer: jwtObject.iss,
         ExpiresAt: new Date(jwtObject.exp * 1000),
@@ -15,8 +17,13 @@ export function tokenToUser(jwtObject: IJwtObject): IJwtUser {
     };
 }
 
-export interface IJwtObject {
-    UserName: string;
+export interface IJwtClaims {
+    UID: string;
+    Name: string;
+    Email: string;
+}
+
+export interface IJwtObject extends IJwtClaims {
     iss: string;
     aud: string;
     nbf: number;
@@ -24,8 +31,7 @@ export interface IJwtObject {
     iat: number;
 }
 
-export interface IJwtUser {
-    UserName: string;
+export interface IJwtUser extends IJwtClaims {
     Issuer: string;
     Audience: string;
     NotBefore: Date;

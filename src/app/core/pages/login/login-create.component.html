@@ -1,0 +1,82 @@
+<app-template-login titulo="Criar cadastro">
+    <div cardBody>
+        <form formContent #form="ngForm" (ngSubmit)="onSubmit(form)">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <fa-icon [icon]="['fas', 'user']"></fa-icon>
+                        </span>
+                    </div>
+                    <input #nameInput="ngModel" [(ngModel)]="loginCreateData.name" required type="text" name="name" class="form-control" placeholder="Nome*">
+                </div>
+                <small *ngIf="nameInput.invalid && form.submitted" class="form-text text-danger">Campo obrigatório</small>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend ">
+                        <span class=" input-group-text ">
+                            <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
+                        </span>
+                    </div>
+                    <input #emailInput="ngModel" [(ngModel)]="loginCreateData.email" required type="email" name="email" class="form-control" placeholder="E-mail*">
+                </div>
+                <small *ngIf="emailInput.invalid && form.submitted" class="form-text text-danger">Campo obrigatório</small>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group ">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <fa-icon [icon]="['fas', 'key']"></fa-icon>
+                        </span>
+                    </div>
+                    <input #passwordInput="ngModel" [(ngModel)]="loginCreateData.password" required type="password" name="password" class="form-control" placeholder="Senha*">
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <small *ngIf="passwordInput.invalid && form.submitted" class="form-text text-danger">Campo obrigatório</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group ">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <fa-icon [icon]="['fas', 'key']"></fa-icon>
+                        </span>
+                    </div>
+                    <input #passwordConfirmationInput="ngModel" [(ngModel)]="loginCreateData.passwordConfirmation" required type="password" name="passwordConfirmation" class="form-control" placeholder="Confirmação de senha*">
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <small *ngIf="passwordConfirmationInput.invalid && form.submitted" class="form-text text-danger">Campo obrigatório</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button [disabled]="submitting" type="submit" class="btn btn-primary btn-block theme-button">
+                                <fa-icon *ngIf="submitting" [icon]="['fas', 'spinner']" [pulse]="true" ></fa-icon>
+                                Criar cadastro
+                            </button>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="errorMessage || successMessage" class="fit-content">
+                <div class="col-sm-12">
+                    <div class="text-danger text-line-feed">{{errorMessage}}</div>
+                    <div *ngIf="successMessage" class="text-success text-line-feed">{{successMessage}}</div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div cardFooter>
+        Já tem uma conta? &nbsp;<a routerLink="/login" href="#" class="theme-link">Realizar login</a>
+    </div>
+</app-template-login>
