@@ -1,12 +1,7 @@
-import { IHttpResolverResult } from 'src/app/core/interfaces/http-resolver-result.interface';
+import { IHttpResolverResult } from 'src/app/core/resolvers/resolver-entity';
 
 export interface IAccount {
-    accountId: number;
-    title: string;
-    ownerId: number;
-    highlightColor: string;
-}
-
-export interface AccountEditResolverResult extends IHttpResolverResult<IAccount> {
-
+    userId: number;
+    name: string;
+    email: string;
 }

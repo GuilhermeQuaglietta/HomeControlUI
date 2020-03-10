@@ -23,7 +23,7 @@
 
                     <div class="dropdown-menu bg-dark " aria-labelledby="navbarDropdown ">
                         <ng-container *ngFor="let subMenu of menu.subMenu">
-                            <a *ngIf="subMenu.url" class="dropdown-item text-light" [href]="subMenu.url">
+                            <a *ngIf="subMenu.url" class="dropdown-item text-light" [routerLink]="[subMenu.url]">
                                 <fa-icon [icon]="subMenu.icone"></fa-icon> {{subMenu.nome}}
                             </a>
 

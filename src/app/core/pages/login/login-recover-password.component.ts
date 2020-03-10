@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-import { IChangePassword } from '../../services/authentication/authentication';
-import { AuthenticationService } from '../../services/authentication/authentication.service';
+import { LoginService } from './login.service';
+import { IChangePassword } from './login-entity';
 
 @Component({
   templateUrl: './login-recover-password.component.html',
@@ -24,7 +24,7 @@ export class LoginRecoverPasswordComponent implements OnInit {
 
   message: string;
 
-  constructor(private authenticationService: AuthenticationService,
+  constructor(private authenticationService: LoginService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -36,7 +36,7 @@ export class LoginRecoverPasswordComponent implements OnInit {
         this.recoveryData.recoveryKey = params.get("recoveryKey");
         this.message = "Validando chave de recuperação...";
 
-        this.authenticationService.validateRecoveryKey(this.recoveryData.recoveryKey).subscribe(
+        this.authenticationService.recoveryValidateKey(this.recoveryData.recoveryKey).subscribe(
           () => {
             this.validatingKey = false;
             this.validatedKey = true;
@@ -56,7 +56,7 @@ export class LoginRecoverPasswordComponent implements OnInit {
       return false;
     }
     this.submitting = true;
-    this.authenticationService.changePassword(this.recoveryData).subscribe(
+    this.authenticationService.recoveryChangePassword(this.recoveryData).subscribe(
       next => this.onSuccess(),
       error => this.onFailure(error)
     );

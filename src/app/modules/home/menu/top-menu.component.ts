@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthorizationService } from 'src/app/core/authorization/authorization.service';
+import { AuthorizationService } from 'src/app/core/services/authorization.service';
 import { Router } from '@angular/router';
 import { IMenu } from './top-menu';
 import { faCoffee, faHome, faFileContract, faShoppingCart, faCoins, faBoxes, faPlus, faSearch, faListUl, faChartBar, faMoneyCheck, faPiggyBank, faWallet, faChartLine, faChartArea, faCreditCard, faFileSignature } from '@fortawesome/free-solid-svg-icons';

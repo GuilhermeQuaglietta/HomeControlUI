@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ObjectToQueryString } from 'src/app/core/functions/objectFunctions';
-import { IBaseHttpService } from '../../interfaces/base-http-service.interface';
+import { IBaseHttpService } from './http-interface';
 
 @Injectable({
     providedIn: 'root'
@@ -24,7 +24,7 @@ export class BaseHttpService<TEntity> implements IBaseHttpService<TEntity> {
             withCredentials: true,
         });
     }
-    getOne(id: any): Observable<TEntity> {
+    getFirst(id: any): Observable<TEntity> {
         return this.client.get<TEntity>(this.mainUri + `/${id}`, {
             withCredentials: true,
         });

@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AuthorizationService } from '../../authorization/authorization.service';
+import { AuthorizationService } from '../../services/authorization.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ILogin } from '../../services/authentication/authentication';
-import { AuthenticationService } from '../../services/authentication/authentication.service';
+import { ILogin } from './login-entity';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,7 @@ export class LoginComponent {
   errorMessage: string;
   successMessage: string;
 
-  constructor(private authenticationService: AuthenticationService,
+  constructor(private authenticationService: LoginService,
     private authorizationService: AuthorizationService,
     private router: Router) { }
 

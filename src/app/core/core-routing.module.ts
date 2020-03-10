@@ -6,10 +6,13 @@ import { LoginCreateComponent } from './pages/login/login-create.component';
 import { LoginRecoverEmailComponent } from './pages/login/login-recover-email.component';
 import { LoginRecoverPasswordComponent } from './pages/login/login-recover-password.component';
 import { AuthenticatedGuard } from './guards/authenticated-guard';
-import { AccountEditResolver } from './pages/account/account-edit-resolver.service';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './pages/notfound/notfound.component';
 import { LoginIndexComponent } from './pages/login/login-index.component';
+import { AccountIndexComponent } from './pages/account/account-index.component';
+import { AccountComponent } from './pages/account/account.component';
+import { AccountChangePasswordComponent } from './pages/account/account-change-password.component';
+import { AccountEditResolver } from '../modules/finances-account/finances-account-edit-resolver.service';
 
 const routes: Routes = [
     {
@@ -26,12 +29,12 @@ const routes: Routes = [
     },
     {
         path: 'account',
-        component: AccountEditComponent,
+        component: AccountIndexComponent,
         canActivate: [AuthenticatedGuard],
-        resolve: { resolvedData: AccountEditResolver },
         children: [
-            { path: 'account/changepassword', component: AccountEditComponent, canActivate: [AuthenticatedGuard], resolve: { resolvedData: AccountEditResolver } },
-            { path: '', component: AccountEditComponent, canActivate: [AuthenticatedGuard] }
+            { path: 'account/edit', component: AccountEditComponent, canActivate: [AuthenticatedGuard] },
+            { path: 'account/changepassword', component: AccountChangePasswordComponent, canActivate: [AuthenticatedGuard] },
+            { path: '', component: AccountComponent, canActivate: [AuthenticatedGuard] }
         ]
     },
 ]

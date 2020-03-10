@@ -17,6 +17,7 @@ import { AccountEditComponent } from './pages/account/account-edit.component';
 import { AccountComponent } from './pages/account/account.component';
 import { AccountChangePasswordComponent } from './pages/account/account-change-password.component';
 import { AccountIndexComponent } from './pages/account/account-index.component';
+import { AccountRoutingModule } from './pages/account/account-routing.module';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AccountIndexComponent } from './pages/account/account-index.component';
     RouterModule,
     FontAwesomeModule,
     CoreRoutingModule,
+    AccountRoutingModule,
   ],
   exports: [
     NotFoundComponent,

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthorizationService } from 'src/app/core/authorization/authorization.service';
+import { AuthorizationService } from 'src/app/core/services/authorization.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http/http';
-import { ILoginCreate } from '../../services/authentication/authentication';
-import { AuthenticationService } from '../../services/authentication/authentication.service';
+import { ILoginCreate } from './login-entity';
+import { LoginService } from './login.service';
 
 @Component({
   templateUrl: './login-create.component.html',
@@ -16,7 +16,7 @@ export class LoginCreateComponent {
   errorMessage: string;
   successMessage: string;
 
-  constructor(private authenticationService: AuthenticationService,
+  constructor(private authenticationService: LoginService,
     private router: Router) {
     this.loginCreateData = { email: '', name: '', password: '', passwordConfirmation: '', };
   }
@@ -27,7 +27,7 @@ export class LoginCreateComponent {
     }
     this.submitting = true;
 
-    this.authenticationService.loginCreate(this.loginCreateData).subscribe(
+    this.authenticationService.create(this.loginCreateData).subscribe(
       next => this.onSuccess(next),
       error => this.onFailure(error)
     );

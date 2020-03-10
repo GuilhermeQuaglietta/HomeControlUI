@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthorizationService } from 'src/app/core/authorization/authorization.service';
+import { AuthorizationService } from 'src/app/core/services/authorization.service';
 import { Router } from '@angular/router';
 import { IJwtUser } from 'src/app/core/functions/jsonWebToken.functions';
 

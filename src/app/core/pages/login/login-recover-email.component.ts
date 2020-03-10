@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { AuthenticationService } from '../../services/authentication/authentication.service';
+import { LoginService } from './login.service';
 
 @Component({
   templateUrl: './login-recover-email.component.html'
@@ -15,7 +15,7 @@ export class LoginRecoverEmailComponent implements OnInit {
   errorMessage: string;
   successMessage: string;
 
-  constructor(private authenticationService: AuthenticationService,
+  constructor(private authenticationService: LoginService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -28,7 +28,7 @@ export class LoginRecoverEmailComponent implements OnInit {
       return false;
     }
     this.submitting = true;
-    this.authenticationService.sendRecoveryEmail(this.recoveryEmail).subscribe(
+    this.authenticationService.recoverySendEmail(this.recoveryEmail).subscribe(
       next => this.onSuccess(next),
       error => this.onFailure(error)
     );

@@ -2,22 +2,26 @@ import { Injectable } from "@angular/core";
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { AccountService } from './account.service';
-import { AccountEditResolverResult } from './account';
+import { AccountService } from '../../core/pages/account/account.service';
+import { IAccount } from '../../core/pages/account/account';
 import { HttpStatusCode } from 'src/app/core/enums/HttpStatusCode';
 import { HttpErrorResponse } from '@angular/common/http';
+import { BaseEntityResolver } from 'src/app/core/resolvers/base-entity-resolver';
+import { IFinancesAccount } from './finances-account';
+import { IHttpResolverResult } from 'src/app/core/resolvers/resolver-entity';
+import { FinancesAccountService } from './finances-account.service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class AccountEditResolver implements Resolve<AccountEditResolverResult>{
+export class AccountEditResolver implements Resolve<IHttpResolverResult<IFinancesAccount>>{
 
-    constructor(private accountService: AccountService) { }
+    constructor(private service: FinancesAccountService) { }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<AccountEditResolverResult> {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IHttpResolverResult<IFinancesAccount>> {
         const id = route.paramMap.get('id');
 
-        let result: AccountEditResolverResult;
+        let result: IHttpResolverResult<IFinancesAccount>;
 
         if (id === undefined || id === null) {
             //Abre a pagina com um registro em branco
@@ -29,9 +33,9 @@ export class AccountEditResolver implements Resolve<AccountEditResolverResult>{
             return of(result);
         }
 
-        return this.accountService.getOne(+id)
+        return this.service.getFirst(+id)
             .pipe(
-                map(account => ({ content: account, httpStatusCode: HttpStatusCode.Ok })),
+                map(financesAccount => ({ content: financesAccount, httpStatusCode: HttpStatusCode.Ok })),
                 catchError((error: HttpErrorResponse) => (of({ content: null, httpStatusCode: error.status, error })))
             );
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tokenStringToObject as claimsToObject, tokenToUser, IJwtUser, getTokenClaims } from '../functions/jsonWebToken.functions';
-import { StorageService, JWTUSERKEY, JWTUSERSTRINGKEY } from '../services/storage.service';
+import { StorageService, JWTUSERKEY, JWTUSERSTRINGKEY } from './storage/storage.service';
 
 
 @Injectable({
@@ -22,7 +22,6 @@ export class AuthorizationService {
     if (currentUser !== null && currentUser !== undefined) {
       this.JwtUser = currentUser;
     }
-
     this.loginChangeListener = new BehaviorSubject<IJwtUser>(this.JwtUser);
     this.loginChangeEmitter = this.loginChangeListener.asObservable();
   }
@@ -34,6 +33,10 @@ export class AuthorizationService {
 
     this.addUserToStorage(jwtString, this.JwtUser)
     this.loginChangeListener.next(this.JwtUser);
+  }
+
+  getCurrentUser() {
+    return this.JwtUser;
   }
 
   removeLoggedInUser() {
