@@ -29,7 +29,7 @@ export class AuthorizationService {
   setLoggedInUser(jwtString: string) {
     const claims = getTokenClaims(jwtString);
     const claimsObject = claimsToObject(claims);
-    this.JwtUser = tokenToUser(claimsObject);
+    this.JwtUser = tokenToUser(claimsObject, jwtString);
 
     this.addUserToStorage(jwtString, this.JwtUser)
     this.loginChangeListener.next(this.JwtUser);

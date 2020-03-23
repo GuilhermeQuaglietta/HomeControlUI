@@ -2,6 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ILogin, IChangePassword, ILoginCreate } from './login-entity';
 import { Observable } from 'rxjs';
+import { AuthorizationService } from '../../services/authorization.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,23 +14,23 @@ export class LoginService {
   private loginCreateUrl = this.baseUrl + "api/v1/user"
   private recoverUrl = this.baseUrl + "api/v1/login/recover"
 
-  constructor(private client: HttpClient) { }
+  constructor(private client: HttpClient, authService: AuthorizationService) { }
 
   login(login: ILogin): Observable<any> {
     return this.client.post(this.loginUrl, login, {
-      withCredentials: true,
+      withCredentials: false,
     });
   }
 
   create(login: ILoginCreate): Observable<any> {
     return this.client.post(this.loginCreateUrl, login, {
-      withCredentials: true,
+      withCredentials: false,
     });
   }
 
   recoverySendEmail(email: string): Observable<any> {
     return this.client.post(this.recoverUrl, JSON.stringify(email), {
-      withCredentials: true,
+      withCredentials: false,
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'
       })
@@ -38,13 +39,13 @@ export class LoginService {
 
   recoveryValidateKey(recoveryKey: string): Observable<any> {
     return this.client.get(this.recoverUrl + "/" + recoveryKey, {
-      withCredentials: true,
+      withCredentials: false,
     });
   }
 
   recoveryChangePassword(recoverInfo: IChangePassword) {
     return this.client.put(this.recoverUrl, recoverInfo, {
-      withCredentials: true,
+      withCredentials: false,
     });
   }
 }

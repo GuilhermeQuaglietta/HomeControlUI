@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-12">
+        <button type="button" routerLink="/financesaccount/">Incluir conta</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            <table class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <th>Codigo da Conta</th>
+                        <th>Título</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of accountList">
+                        <td>{{item.accountId}}</td>
+                        <td>{{item.title}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -37,6 +37,7 @@ export class LoginComponent {
   }
 
   private onLoginSuccess(jwtString: string) {
+    debugger;
     this.successMessage = "Login realizado com sucesso! Redirecionando...";
     this.errorMessage = null;
     setTimeout(() => {

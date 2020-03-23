@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FinancesAccountIndexComponent } from './finances-account-index.component';
 import { NotFoundComponent } from 'src/app/core/pages/notfound/notfound.component';
 import { AuthenticatedGuard } from 'src/app/core/guards/authenticated-guard';
-import { FinancesAccountComponent } from './finances-account.component';
 import { FinancesAccountEditComponent } from './finances-account-edit.component';
+import { FinancesAccountComponent } from './finances-account.component';
+import { FinancesAccountListComponent } from './finances-account-list.component';
 
 const routes: Routes = [
     {
         path: 'financesaccount',
-        component: FinancesAccountIndexComponent,
+        component: FinancesAccountComponent,
         canActivate: [AuthenticatedGuard],
         children: [
+            { path: '', component: FinancesAccountListComponent, pathMatch: 'full' },
             { path: ':id', component: FinancesAccountEditComponent, canActivate: [AuthenticatedGuard] },
-            { path: '', component: FinancesAccountComponent, pathMatch: 'full' },
         ]
     }
 ]
